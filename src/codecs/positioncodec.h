@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo Project
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	This file is part of the KDE Baloo Project
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_POSITIONCODEC_H
@@ -18,10 +18,10 @@ namespace Baloo {
 class PositionCodec
 {
 public:
-    PositionCodec();
+	PositionCodec();
 
-    QByteArray encode(const QVector<PositionInfo>& list);
-    QVector<PositionInfo> decode(const QByteArray& arr);
+	QByteArray encode(const QVector<PositionInfo>& list);
+	QVector<PositionInfo> decode(const QByteArray& arr);
 };
 }
 

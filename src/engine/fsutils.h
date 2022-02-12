@@ -1,9 +1,9 @@
 /*
-    This file is part of the KDE Baloo Project
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <me@vhanda.in>
-    SPDX-FileCopyrightText: 2010 Tobias Koenig <tokoe@kde.org>
+	This file is part of the KDE Baloo Project
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <me@vhanda.in>
+	SPDX-FileCopyrightText: 2010 Tobias Koenig <tokoe@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+	SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
 #ifndef BALOO_ENGINE_FSUTILS_H

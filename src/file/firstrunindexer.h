@@ -1,7 +1,7 @@
 /*
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_FIRSTRUNINDEXER_H
@@ -18,20 +18,20 @@ class FileIndexerConfig;
 
 class FirstRunIndexer : public QObject, public QRunnable
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    FirstRunIndexer(Database* db, FileIndexerConfig* config, const QStringList& folders);
+	FirstRunIndexer(Database* db, FileIndexerConfig* config, const QStringList& folders);
 
-    void run() override;
+	void run() override;
 
 Q_SIGNALS:
-    void done();
+	void done();
 
 private:
-    Database* m_db;
-    FileIndexerConfig* m_config;
+	Database* m_db;
+	FileIndexerConfig* m_config;
 
-    QStringList m_folders;
+	QStringList m_folders;
 };
 }
 

@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo project.
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	This file is part of the KDE Baloo project.
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_DOCUMENTIDDB_H
@@ -17,23 +17,23 @@ namespace Baloo {
 class BALOO_ENGINE_EXPORT DocumentIdDB
 {
 public:
-    DocumentIdDB(MDB_dbi dbi, MDB_txn* txn);
-    ~DocumentIdDB();
+	DocumentIdDB(MDB_dbi dbi, MDB_txn* txn);
+	~DocumentIdDB();
 
-    static MDB_dbi create(const char* name, MDB_txn* txn);
-    static MDB_dbi open(const char* name, MDB_txn* txn);
+	static MDB_dbi create(const char* name, MDB_txn* txn);
+	static MDB_dbi open(const char* name, MDB_txn* txn);
 
-    void put(quint64 docId);
-    bool contains(quint64 docId);
-    void del(quint64 docID);
+	void put(quint64 docId);
+	bool contains(quint64 docId);
+	void del(quint64 docID);
 
-    QVector<quint64> fetchItems(int size);
-    uint size();
+	QVector<quint64> fetchItems(int size);
+	uint size();
 
-    QVector<quint64> toTestVector() const;
+	QVector<quint64> toTestVector() const;
 private:
-    MDB_txn* m_txn;
-    MDB_dbi m_dbi;
+	MDB_txn* m_txn;
+	MDB_dbi m_dbi;
 };
 
 }

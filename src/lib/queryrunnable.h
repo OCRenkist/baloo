@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo Project
-    SPDX-FileCopyrightText: 2013 Vishesh Handa <me@vhanda.in>
+	This file is part of the KDE Baloo Project
+	SPDX-FileCopyrightText: 2013 Vishesh Handa <me@vhanda.in>
 
-    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+	SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
 #ifndef QUERYRUNNABLE_H
@@ -19,21 +19,21 @@ namespace Baloo {
  */
 class BALOO_CORE_EXPORT QueryRunnable : public QObject, public QRunnable
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    QueryRunnable(const Query& query, QObject* parent = nullptr);
-    ~QueryRunnable() override;
-    void run() override;
+	QueryRunnable(const Query& query, QObject* parent = nullptr);
+	~QueryRunnable() override;
+	void run() override;
 
-    void stop();
+	void stop();
 
 Q_SIGNALS:
-    void queryResult(Baloo::QueryRunnable* queryRunnable, const QString& filePath);
-    void finished(Baloo::QueryRunnable* queryRunnable);
+	void queryResult(Baloo::QueryRunnable* queryRunnable, const QString& filePath);
+	void finished(Baloo::QueryRunnable* queryRunnable);
 
 private:
-    class Private;
-    Private* d;
+	class Private;
+	Private* d;
 };
 
 }

@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo Project
-    SPDX-FileCopyrightText: 2013 Vishesh Handa <me@vhanda.in>
+	This file is part of the KDE Baloo Project
+	SPDX-FileCopyrightText: 2013 Vishesh Handa <me@vhanda.in>
 
-    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+	SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
 #ifndef BALOO_TERM_H
@@ -17,128 +17,128 @@ namespace Baloo {
 class Term
 {
 public:
-    enum Comparator {
-        Auto,
-        Equal,
-        Contains,
-        Greater,
-        GreaterEqual,
-        Less,
-        LessEqual,
-    };
+	enum Comparator {
+		Auto,
+		Equal,
+		Contains,
+		Greater,
+		GreaterEqual,
+		Less,
+		LessEqual,
+	};
 
-    enum Operation {
-        None,
-        And,
-        Or,
-    };
+	enum Operation {
+		None,
+		And,
+		Or,
+	};
 
-    Term();
-    Term(const Term& t);
+	Term();
+	Term(const Term& t);
 
-    /**
-     * The Item must contain the property \p property
-     */
-    explicit Term(const QString& property);
+	/**
+	 * The Item must contain the property \p property
+	 */
+	explicit Term(const QString& property);
 
-    /**
-     * The Item must contain the property \p property with
-     * value \value.
-     *
-     * The default comparator is Auto which has the following behavior
-     * For Strings - Contains
-     * For DateTime - Contains
-     * For any other type - Equals
-     */
-    Term(const QString& property, const QVariant& value, Comparator c = Auto);
+	/**
+	 * The Item must contain the property \p property with
+	 * value \value.
+	 *
+	 * The default comparator is Auto which has the following behavior
+	 * For Strings - Contains
+	 * For DateTime - Contains
+	 * For any other type - Equals
+	 */
+	Term(const QString& property, const QVariant& value, Comparator c = Auto);
 
-    /**
-     * This term is a combination of other terms
-     */
-    explicit Term(Operation op);
-    Term(Operation op, const Term& t);
-    Term(Operation op, const QList<Term>& t);
-    Term(const Term& lhs, Operation op, const Term& rhs);
-    ~Term();
+	/**
+	 * This term is a combination of other terms
+	 */
+	explicit Term(Operation op);
+	Term(Operation op, const Term& t);
+	Term(Operation op, const QList<Term>& t);
+	Term(const Term& lhs, Operation op, const Term& rhs);
+	~Term();
 
-    bool isValid() const;
+	bool isValid() const;
 
-    /**
-     * Negate this term. Negation only applies for Equal or Contains
-     * For other Comparators you must invert it yourself
-     */
-    void setNegation(bool isNegated);
+	/**
+	 * Negate this term. Negation only applies for Equal or Contains
+	 * For other Comparators you must invert it yourself
+	 */
+	void setNegation(bool isNegated);
 
-    bool negated() const;
-    bool isNegated() const;
+	bool negated() const;
+	bool isNegated() const;
 
-    void addSubTerm(const Term& term);
-    void setSubTerms(const QList<Term>& terms);
+	void addSubTerm(const Term& term);
+	void setSubTerms(const QList<Term>& terms);
 
-    /**
-     * Returns the first subTerm in the list of subTerms
-     */
-    Term subTerm() const;
-    QList<Term> subTerms() const;
+	/**
+	 * Returns the first subTerm in the list of subTerms
+	 */
+	Term subTerm() const;
+	QList<Term> subTerms() const;
 
-    void setOperation(Operation op);
-    Operation operation() const;
+	void setOperation(Operation op);
+	Operation operation() const;
 
-    bool isEmpty() const;
-    bool empty() const;
+	bool isEmpty() const;
+	bool empty() const;
 
-    /**
-     * Return the property this term is targeting
-     */
-    QString property() const;
-    void setProperty(const QString& property);
+	/**
+	 * Return the property this term is targeting
+	 */
+	QString property() const;
+	void setProperty(const QString& property);
 
-    QVariant value() const;
-    void setValue(const QVariant& value);
+	QVariant value() const;
+	void setValue(const QVariant& value);
 
-    Comparator comparator() const;
-    void setComparator(Comparator c);
+	Comparator comparator() const;
+	void setComparator(Comparator c);
 
-    void setUserData(const QString& name, const QVariant& value);
-    QVariant userData(const QString& name) const;
+	void setUserData(const QString& name, const QVariant& value);
+	QVariant userData(const QString& name) const;
 
-    QVariantMap toVariantMap() const;
-    static Term fromVariantMap(const QVariantMap& map);
+	QVariantMap toVariantMap() const;
+	static Term fromVariantMap(const QVariantMap& map);
 
-    bool operator == (const Term& rhs) const;
+	bool operator == (const Term& rhs) const;
 
-    Term& operator=(const Term& rhs);
+	Term& operator=(const Term& rhs);
 
 private:
-    class Private;
-    Private* d;
+	class Private;
+	Private* d;
 };
 
 inline Term operator &&(const Term& lhs, const Term& rhs)
 {
-    if (lhs.isEmpty())
-        return rhs;
-    else if (rhs.isEmpty())
-        return lhs;
+	if (lhs.isEmpty())
+		return rhs;
+	else if (rhs.isEmpty())
+		return lhs;
 
-    return {lhs, Term::And, rhs};
+	return {lhs, Term::And, rhs};
 }
 
 inline Term operator ||(const Term& lhs, const Term& rhs)
 {
-    if (lhs.isEmpty())
-        return rhs;
-    else if (rhs.isEmpty())
-        return lhs;
+	if (lhs.isEmpty())
+		return rhs;
+	else if (rhs.isEmpty())
+		return lhs;
 
-    return {lhs, Term::Or, rhs};
+	return {lhs, Term::Or, rhs};
 }
 
 inline Term operator !(const Term& rhs)
 {
-    Term t(rhs);
-    t.setNegation(!rhs.isNegated());
-    return t;
+	Term t(rhs);
+	t.setNegation(!rhs.isNegated());
+	return t;
 }
 
 /**

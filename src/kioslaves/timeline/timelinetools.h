@@ -1,8 +1,8 @@
 /*
-    This file is part of the Nepomuk KDE project.
-    SPDX-FileCopyrightText: 2010 Sebastian Trueg <trueg@kde.org>
+	This file is part of the Nepomuk KDE project.
+	SPDX-FileCopyrightText: 2010 Sebastian Trueg <trueg@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.0-or-later
+	SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
 #ifndef BALOO_TIMELINE_TOOLS_H_
@@ -34,11 +34,11 @@ namespace Baloo
  * |- /weeks
  */
 enum TimelineFolderType {
-    NoFolder = 0,    /// nothing
-    RootFolder,      /// the root folder
-    CalendarFolder,  /// the calendar folder listing all months
-    MonthFolder,     /// a folder listing a month's days (m_date contains the month)
-    DayFolder,       /// a folder listing a day (m_date); optionally m_filename is set
+	NoFolder = 0,    /// nothing
+	RootFolder,      /// the root folder
+	CalendarFolder,  /// the calendar folder listing all months
+	MonthFolder,     /// a folder listing a month's days (m_date contains the month)
+	DayFolder,       /// a folder listing a day (m_date); optionally m_filename is set
 };
 
 /**

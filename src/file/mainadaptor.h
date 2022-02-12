@@ -23,25 +23,25 @@
  */
 class MainAdaptor: public QDBusAbstractAdaptor
 {
-    Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.baloo")
-    Q_CLASSINFO("D-Bus Introspection", ""
-"  <interface name=\"org.kde.baloo\">\n"
-"    <method name=\"quit\"/>\n"
-"    <method name=\"updateConfig\"/>\n"
-"  </interface>\n"
-        "")
+	Q_OBJECT
+	Q_CLASSINFO("D-Bus Interface", "org.kde.baloo")
+	Q_CLASSINFO("D-Bus Introspection", ""
+		"  <interface name=\"org.kde.baloo\">\n"
+		"    <method name=\"quit\"/>\n"
+		"    <method name=\"updateConfig\"/>\n"
+		"  </interface>\n"
+	    "")
 public:
-    explicit MainAdaptor(Baloo::MainHub *parent);
-    virtual ~MainAdaptor();
+	explicit MainAdaptor(Baloo::MainHub *parent);
+	virtual ~MainAdaptor();
 
 public: // PROPERTIES
 public Q_SLOTS: // METHODS
-    void quit();
-    void updateConfig();
+	void quit();
+	void updateConfig();
 Q_SIGNALS: // SIGNALS
 private:
-    Baloo::MainHub* mainHub;
+	Baloo::MainHub* mainHub;
 };
 
 #endif

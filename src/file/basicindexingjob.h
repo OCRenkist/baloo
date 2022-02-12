@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo Project
-    SPDX-FileCopyrightText: 2013 Vishesh Handa <me@vhanda.in>
+	This file is part of the KDE Baloo Project
+	SPDX-FileCopyrightText: 2013 Vishesh Handa <me@vhanda.in>
 
-    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+	SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
 #ifndef BASICINDEXINGJOB_H
@@ -15,27 +15,27 @@ namespace Baloo {
 class BasicIndexingJob
 {
 public:
-    enum IndexingLevel {
-        NoLevel,
-        MarkForContentIndexing,
-    };
+	enum IndexingLevel {
+		NoLevel,
+		MarkForContentIndexing,
+	};
 
-    BasicIndexingJob(const QString& filePath, const QString& mimetype,
-                     IndexingLevel level = MarkForContentIndexing);
-    ~BasicIndexingJob();
+	BasicIndexingJob(const QString& filePath, const QString& mimetype,
+	                 IndexingLevel level = MarkForContentIndexing);
+	~BasicIndexingJob();
 
-    bool index();
+	bool index();
 
-    Document document() { return m_doc; }
+	Document document() { return m_doc; }
 
 private:
-    QString m_filePath;
-    QString m_mimetype;
-    IndexingLevel m_indexingLevel;
+	QString m_filePath;
+	QString m_mimetype;
+	IndexingLevel m_indexingLevel;
 
-    Document m_doc;
+	Document m_doc;
 
-    friend class BasicIndexingJobTest;
+	friend class BasicIndexingJobTest;
 };
 
 }

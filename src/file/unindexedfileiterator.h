@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo project.
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	This file is part of the KDE Baloo project.
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_UNINDEXEDFILEITERATOR_H
@@ -27,27 +27,27 @@ class Transaction;
 class UnIndexedFileIterator
 {
 public:
-    UnIndexedFileIterator(const FileIndexerConfig* config, Transaction* transaction, const QString& folder);
-    ~UnIndexedFileIterator();
+	UnIndexedFileIterator(const FileIndexerConfig* config, Transaction* transaction, const QString& folder);
+	~UnIndexedFileIterator();
 
-    QString next();
-    QString filePath() const;
-    QString mimetype() const;
-    bool mTimeChanged() const;
-    bool cTimeChanged() const;
+	QString next();
+	QString filePath() const;
+	QString mimetype() const;
+	bool mTimeChanged() const;
+	bool cTimeChanged() const;
 
 private:
-    bool shouldIndex(const QString& filePath);
+	bool shouldIndex(const QString& filePath);
 
-    const FileIndexerConfig* m_config;
-    Transaction* m_transaction;
-    FilteredDirIterator m_iter;
+	const FileIndexerConfig* m_config;
+	Transaction* m_transaction;
+	FilteredDirIterator m_iter;
 
-    QMimeDatabase m_mimeDb;
-    QString m_mimetype;
+	QMimeDatabase m_mimeDb;
+	QString m_mimetype;
 
-    bool m_mTimeChanged;
-    bool m_cTimeChanged;
+	bool m_mTimeChanged;
+	bool m_cTimeChanged;
 };
 
 }

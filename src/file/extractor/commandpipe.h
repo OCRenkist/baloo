@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo Project
-    SPDX-FileCopyrightText: 2021 Stefan Brüns <stefan.bruens@rwth-aachen.de>
+	This file is part of the KDE Baloo Project
+	SPDX-FileCopyrightText: 2021 Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
-    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+	SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
 #ifndef COMMANDPIPE_H
@@ -22,50 +22,50 @@ namespace Private {
  */
 class ControllerPipe : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    ControllerPipe(QIODevice* commandPipe, QIODevice* statusPipe);
+	ControllerPipe(QIODevice* commandPipe, QIODevice* statusPipe);
 
-    void processIds(const QVector<quint64>& ids);
+	void processIds(const QVector<quint64>& ids);
 
 Q_SIGNALS:
-    void urlStarted(const QString& url);
-    void urlFinished(const QString& url);
-    void urlFailed(const QString& url);
-    void batchFinished();
+	void urlStarted(const QString& url);
+	void urlFinished(const QString& url);
+	void urlFailed(const QString& url);
+	void batchFinished();
 
 public Q_SLOTS:
-    void processStatusData();
+	void processStatusData();
 
 private:
-    QDataStream m_commandStream;
-    QDataStream m_statusStream;
+	QDataStream m_commandStream;
+	QDataStream m_statusStream;
 };
 
 
 class WorkerPipe : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 
 public:
-    WorkerPipe(QIODevice* commandPipe, QIODevice* statusPipe);
+	WorkerPipe(QIODevice* commandPipe, QIODevice* statusPipe);
 
-    void urlStarted(const QString& url);
-    void urlFinished(const QString& url);
-    void urlFailed(const QString& url);
-    void batchFinished();
+	void urlStarted(const QString& url);
+	void urlFinished(const QString& url);
+	void urlFailed(const QString& url);
+	void batchFinished();
 
 public Q_SLOTS:
-    void processIdData();
+	void processIdData();
 
 Q_SIGNALS:
-    void newDocumentIds(const QVector<quint64>& ids);
-    void inputEnd();
+	void newDocumentIds(const QVector<quint64>& ids);
+	void inputEnd();
 
 private:
-    QDataStream m_commandStream;
-    QDataStream m_statusStream;
+	QDataStream m_commandStream;
+	QDataStream m_statusStream;
 };
 
 } // namespace Private

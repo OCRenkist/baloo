@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo Project
-    SPDX-FileCopyrightText: 2014 Vishesh Handa <vhanda@kde.org>
+	This file is part of the KDE Baloo Project
+	SPDX-FileCopyrightText: 2014 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_TAGLISTJOB_H
@@ -18,17 +18,17 @@ namespace Baloo {
  */
 class BALOO_CORE_EXPORT TagListJob : public KJob
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit TagListJob(QObject* parent = nullptr);
-    ~TagListJob() override;
+	explicit TagListJob(QObject* parent = nullptr);
+	~TagListJob() override;
 
-    void start() override;
-    QStringList tags();
+	void start() override;
+	QStringList tags();
 
 private:
-    class Private;
-    Private* d;
+	class Private;
+	Private* d;
 };
 
 }

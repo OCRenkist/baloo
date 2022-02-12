@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo project.
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	This file is part of the KDE Baloo project.
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_TRANSACTION_H
@@ -29,97 +29,97 @@ class DBState;
 class BALOO_ENGINE_EXPORT Transaction
 {
 public:
-    enum TransactionType {
-        ReadOnly,
-        ReadWrite,
-    };
-    Transaction(const Database& db, TransactionType type);
-    Transaction(Database* db, TransactionType type);
-    ~Transaction();
+	enum TransactionType {
+		ReadOnly,
+		ReadWrite,
+	};
+	Transaction(const Database& db, TransactionType type);
+	Transaction(Database* db, TransactionType type);
+	~Transaction();
 
-    //
-    // Getters
-    //
-    bool hasDocument(quint64 id) const;
-    bool inPhaseOne(quint64 id) const;
-    bool hasFailed(quint64 id) const;
-    QVector<quint64> failedIds(quint64 limit) const;
-    QByteArray documentUrl(quint64 id) const;
+	//
+	// Getters
+	//
+	bool hasDocument(quint64 id) const;
+	bool inPhaseOne(quint64 id) const;
+	bool hasFailed(quint64 id) const;
+	QVector<quint64> failedIds(quint64 limit) const;
+	QByteArray documentUrl(quint64 id) const;
 
-    /**
-     * This method is not cheap, and does not stat the filesystem in order to convert the path
-     * \p path into an id.
-     */
-    quint64 documentId(const QByteArray& path) const;
-    QByteArray documentData(quint64 id) const;
+	/**
+	 * This method is not cheap, and does not stat the filesystem in order to convert the path
+	 * \p path into an id.
+	 */
+	quint64 documentId(const QByteArray& path) const;
+	QByteArray documentData(quint64 id) const;
 
-    DocumentTimeDB::TimeInfo documentTimeInfo(quint64 id) const;
+	DocumentTimeDB::TimeInfo documentTimeInfo(quint64 id) const;
 
-    QVector<quint64> exec(const EngineQuery& query, int limit = -1) const;
+	QVector<quint64> exec(const EngineQuery& query, int limit = -1) const;
 
-    PostingIterator* postingIterator(const EngineQuery& query) const;
-    PostingIterator* postingCompIterator(const QByteArray& prefix, qlonglong value, PostingDB::Comparator com) const;
-    PostingIterator* postingCompIterator(const QByteArray& prefix, double value, PostingDB::Comparator com) const;
-    PostingIterator* postingCompIterator(const QByteArray& prefix, const QByteArray& value, PostingDB::Comparator com) const;
-    PostingIterator* mTimeRangeIter(quint32 beginTime, quint32 endTime) const;
-    PostingIterator* docUrlIter(quint64 id) const;
+	PostingIterator* postingIterator(const EngineQuery& query) const;
+	PostingIterator* postingCompIterator(const QByteArray& prefix, qlonglong value, PostingDB::Comparator com) const;
+	PostingIterator* postingCompIterator(const QByteArray& prefix, double value, PostingDB::Comparator com) const;
+	PostingIterator* postingCompIterator(const QByteArray& prefix, const QByteArray& value, PostingDB::Comparator com) const;
+	PostingIterator* mTimeRangeIter(quint32 beginTime, quint32 endTime) const;
+	PostingIterator* docUrlIter(quint64 id) const;
 
-    QVector<quint64> fetchPhaseOneIds(int size) const;
-    uint phaseOneSize() const;
-    uint size() const;
+	QVector<quint64> fetchPhaseOneIds(int size) const;
+	uint phaseOneSize() const;
+	uint size() const;
 
-    QVector<QByteArray> fetchTermsStartingWith(const QByteArray& term) const;
+	QVector<QByteArray> fetchTermsStartingWith(const QByteArray& term) const;
 
-    //
-    // Introspecing document data
-    //
-    QVector<QByteArray> documentTerms(quint64 docId) const;
-    QVector<QByteArray> documentFileNameTerms(quint64 docId) const;
-    QVector<QByteArray> documentXattrTerms(quint64 docId) const;
+	//
+	// Introspecing document data
+	//
+	QVector<QByteArray> documentTerms(quint64 docId) const;
+	QVector<QByteArray> documentFileNameTerms(quint64 docId) const;
+	QVector<QByteArray> documentXattrTerms(quint64 docId) const;
 
-    DatabaseSize dbSize();
+	DatabaseSize dbSize();
 
-    //
-    // Transaction handling
-    //
-    bool commit();
-    void abort();
+	//
+	// Transaction handling
+	//
+	bool commit();
+	void abort();
 
-    //
-    // Write Methods
-    //
-    void addDocument(const Document& doc);
-    void removeDocument(quint64 id);
-    void removeRecursively(quint64 parentId);
-    void addFailed(quint64 id);
+	//
+	// Write Methods
+	//
+	void addDocument(const Document& doc);
+	void removeDocument(quint64 id);
+	void removeRecursively(quint64 parentId);
+	void addFailed(quint64 id);
 
-    bool removeRecursively(quint64 parentId, std::function<bool(quint64)> shouldDelete)
-    {
-        Q_ASSERT(m_txn);
-        Q_ASSERT(m_writeTrans);
+	bool removeRecursively(quint64 parentId, std::function<bool(quint64)> shouldDelete)
+	{
+		Q_ASSERT(m_txn);
+		Q_ASSERT(m_writeTrans);
 
-        return m_writeTrans->removeRecursively(parentId, shouldDelete);
-    }
+		return m_writeTrans->removeRecursively(parentId, shouldDelete);
+	}
 
-    void replaceDocument(const Document& doc, DocumentOperations operations);
-    void setPhaseOne(quint64 id);
-    void removePhaseOne(quint64 id);
+	void replaceDocument(const Document& doc, DocumentOperations operations);
+	void setPhaseOne(quint64 id);
+	void removePhaseOne(quint64 id);
 
-    // Debugging
-    void checkFsTree();
-    void checkTermsDbinPostingDb();
-    void checkPostingDbinTermsDb();
+	// Debugging
+	void checkFsTree();
+	void checkTermsDbinPostingDb();
+	void checkPostingDbinTermsDb();
 
 private:
-    Transaction(const Transaction& rhs) = delete;
+	Transaction(const Transaction& rhs) = delete;
 
-    const DatabaseDbis& m_dbis;
-    MDB_txn *m_txn = nullptr;
-    MDB_env *m_env = nullptr;
-    WriteTransaction *m_writeTrans = nullptr;
+	const DatabaseDbis& m_dbis;
+	MDB_txn *m_txn = nullptr;
+	MDB_env *m_env = nullptr;
+	WriteTransaction *m_writeTrans = nullptr;
 
-    friend class DatabaseSanitizerImpl;
-    friend class DBState; // for testing
+	friend class DatabaseSanitizerImpl;
+	friend class DBState; // for testing
 };
 }
 

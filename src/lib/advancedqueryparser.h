@@ -1,7 +1,7 @@
 /*
-    SPDX-FileCopyrightText: 2014 Vishesh Handa <me@vhanda.in>
+	SPDX-FileCopyrightText: 2014 Vishesh Handa <me@vhanda.in>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_ADVANCEDQUERYPARSER_H
@@ -15,9 +15,9 @@ namespace Baloo {
 class AdvancedQueryParser
 {
 public:
-    AdvancedQueryParser();
+	AdvancedQueryParser();
 
-    Baloo::Term parse(const QString& text);
+	Baloo::Term parse(const QString& text);
 };
 }
 

@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo Project
-    SPDX-FileCopyrightText: 2014 Vishesh Handa <me@vhanda.in>
+	This file is part of the KDE Baloo Project
+	SPDX-FileCopyrightText: 2014 Vishesh Handa <me@vhanda.in>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_PENDINGFILE_H
@@ -19,42 +19,42 @@ namespace Baloo {
 class PendingFile
 {
 public:
-    explicit PendingFile(const QString& path = QString());
+	explicit PendingFile(const QString& path = QString());
 
-    QString path() const;
-    void setPath(const QString& path);
+	QString path() const;
+	void setPath(const QString& path);
 
-    void setAttributeChanged() { m_attributesChanged = true; }
-    void setClosedOnWrite() { m_closedOnWrite = true; }
-    void setModified() { m_modified = true; }
-    void setCreated() { m_created = true; }
-    void setDeleted() { m_deleted = true; }
+	void setAttributeChanged() { m_attributesChanged = true; }
+	void setClosedOnWrite() { m_closedOnWrite = true; }
+	void setModified() { m_modified = true; }
+	void setCreated() { m_created = true; }
+	void setDeleted() { m_deleted = true; }
 
-    bool isNewFile() const;
-    bool shouldIndexContents() const;
-    bool shouldIndexXAttrOnly() const;
-    bool shouldRemoveIndex() const;
+	bool isNewFile() const;
+	bool shouldIndexContents() const;
+	bool shouldIndexXAttrOnly() const;
+	bool shouldRemoveIndex() const;
 
-    bool operator == (const PendingFile& rhs) const {
-        return m_path == rhs.m_path;
-    }
+	bool operator == (const PendingFile& rhs) const {
+		return m_path == rhs.m_path;
+	}
 
-    /**
-     * Takes a PendingFile \p file and merges its flags into
-     * the current PendingFile
-     */
-    void merge(const PendingFile& file);
+	/**
+	 * Takes a PendingFile \p file and merges its flags into
+	 * the current PendingFile
+	 */
+	void merge(const PendingFile& file);
 
 private:
-    QString m_path;
+	QString m_path;
 
-    bool m_created : 1;
-    bool m_closedOnWrite : 1;
-    bool m_attributesChanged : 1;
-    bool m_deleted : 1;
-    bool m_modified : 1;
+	bool m_created : 1;
+	bool m_closedOnWrite : 1;
+	bool m_attributesChanged : 1;
+	bool m_deleted : 1;
+	bool m_modified : 1;
 
-    void printFlags() const;
+	void printFlags() const;
 };
 
 }

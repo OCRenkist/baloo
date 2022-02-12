@@ -1,7 +1,7 @@
 /*
-    SPDX-FileCopyrightText: 2013 Vishesh Handa <me@vhanda.in>
+	SPDX-FileCopyrightText: 2013 Vishesh Handa <me@vhanda.in>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_FILEMONITOR_H
@@ -19,29 +19,29 @@ namespace Baloo {
  */
 class BALOO_CORE_EXPORT FileMonitor : public QObject
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    explicit FileMonitor(QObject* parent = nullptr);
-    ~FileMonitor() override;
+	explicit FileMonitor(QObject* parent = nullptr);
+	~FileMonitor() override;
 
-    void addFile(const QString& fileUrl);
-    void addFile(const QUrl& url);
+	void addFile(const QString& fileUrl);
+	void addFile(const QUrl& url);
 
-    void setFiles(const QStringList& fileList);
+	void setFiles(const QStringList& fileList);
 
-    QStringList files() const;
+	QStringList files() const;
 
-    void clear();
+	void clear();
 
 Q_SIGNALS:
-    void fileMetaDataChanged(const QString& fileUrl);
+	void fileMetaDataChanged(const QString& fileUrl);
 
 private Q_SLOTS:
-    void slotFileMetaDataChanged(const QStringList& fileUrl);
+	void slotFileMetaDataChanged(const QStringList& fileUrl);
 
 private:
-    class Private;
-    Private* d;
+	class Private;
+	Private* d;
 };
 
 }

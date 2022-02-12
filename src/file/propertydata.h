@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo project.
-    SPDX-FileCopyrightText: 2019 Stefan Brüns <stefan.bruens@rwth-aachen.de>
+	This file is part of the KDE Baloo project.
+	SPDX-FileCopyrightText: 2019 Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_PROPERTYDATA_H

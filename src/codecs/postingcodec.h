@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo project.
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	This file is part of the KDE Baloo project.
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_POSTINGCODEC_H
@@ -16,10 +16,10 @@ namespace Baloo {
 class PostingCodec
 {
 public:
-    PostingCodec();
+	PostingCodec();
 
-    QByteArray encode(const QVector<quint64>& list);
-    QVector<quint64> decode(const QByteArray& arr);
+	QByteArray encode(const QVector<quint64>& list);
+	QVector<quint64> decode(const QByteArray& arr);
 };
 
 }

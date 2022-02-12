@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Baloo Project
-    SPDX-FileCopyrightText: 2013-2015 Vishesh Handa <vhanda@kde.org>
+	This file is part of the KDE Baloo Project
+	SPDX-FileCopyrightText: 2013-2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
+	SPDX-License-Identifier: LGPL-2.1-only OR LGPL-3.0-only OR LicenseRef-KDE-Accepted-LGPL
 */
 
 #ifndef BALOO_SEARCHSTORE_H
@@ -22,19 +22,19 @@ class PostingIterator;
 class SearchStore
 {
 public:
-    SearchStore();
-    ~SearchStore();
+	SearchStore();
+	~SearchStore();
 
-    ResultList exec(const Term& term, uint offset, int limit, bool sortResults);
+	ResultList exec(const Term& term, uint offset, int limit, bool sortResults);
 
 private:
-    Database* m_db;
+	Database* m_db;
 
-    PostingIterator* constructQuery(Transaction* tr, const Term& term);
+	PostingIterator* constructQuery(Transaction* tr, const Term& term);
 
-    EngineQuery constructContainsQuery(const QByteArray& prefix, const QString& value);
-    EngineQuery constructEqualsQuery(const QByteArray& prefix, const QString& value);
-    EngineQuery constructTypeQuery(const QString& type);
+	EngineQuery constructContainsQuery(const QByteArray& prefix, const QString& value);
+	EngineQuery constructEqualsQuery(const QByteArray& prefix, const QString& value);
+	EngineQuery constructTypeQuery(const QString& type);
 };
 
 }

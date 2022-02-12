@@ -1,7 +1,7 @@
 /*
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_NEWFILEINDEXER_H
@@ -21,19 +21,19 @@ class FileIndexerConfig;
  */
 class NewFileIndexer : public QObject, public QRunnable
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    NewFileIndexer(Database* db, const FileIndexerConfig* config, const QStringList& newFiles);
+	NewFileIndexer(Database* db, const FileIndexerConfig* config, const QStringList& newFiles);
 
-    void run() override;
+	void run() override;
 
 Q_SIGNALS:
-    void done();
+	void done();
 
 private:
-    Database* m_db;
-    const FileIndexerConfig* m_config;
-    QStringList m_files;
+	Database* m_db;
+	const FileIndexerConfig* m_config;
+	QStringList m_files;
 };
 
 }

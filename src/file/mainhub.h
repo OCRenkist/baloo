@@ -1,7 +1,7 @@
 /*
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_MAINHUB_H
@@ -20,23 +20,23 @@ class FileIndexerConfig;
 
 class MainHub : public QObject
 {
-    Q_OBJECT
-    Q_CLASSINFO("D-Bus Interface", "org.kde.baloo.main")
+	Q_OBJECT
+	Q_CLASSINFO("D-Bus Interface", "org.kde.baloo.main")
 public:
-    MainHub(Database* db, FileIndexerConfig* config, bool firstRun);
+	MainHub(Database* db, FileIndexerConfig* config, bool firstRun);
 
 public Q_SLOTS:
-    Q_SCRIPTABLE void quit() const;
-    Q_SCRIPTABLE void updateConfig();
-    // TODO KF6 - remove
-    Q_SCRIPTABLE void registerBalooWatcher(const QString &service);
+	Q_SCRIPTABLE void quit() const;
+	Q_SCRIPTABLE void updateConfig();
+	// TODO KF6 - remove
+	Q_SCRIPTABLE void registerBalooWatcher(const QString &service);
 
 private:
-    Database* m_db;
-    FileIndexerConfig* m_config;
+	Database* m_db;
+	FileIndexerConfig* m_config;
 
-    FileWatch m_fileWatcher;
-    FileIndexScheduler m_fileIndexScheduler;
+	FileWatch m_fileWatcher;
+	FileIndexScheduler m_fileIndexScheduler;
 
 };
 }

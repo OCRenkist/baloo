@@ -1,7 +1,7 @@
 /*
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_POSTINGITERATOR_H
@@ -21,11 +21,11 @@ namespace Baloo {
 class BALOO_ENGINE_EXPORT PostingIterator
 {
 public:
-    virtual ~PostingIterator();
+	virtual ~PostingIterator();
 
-    virtual quint64 next() = 0;
-    virtual quint64 docId() const = 0;
-    virtual quint64 skipTo(quint64 docId);
+	virtual quint64 next() = 0;
+	virtual quint64 docId() const = 0;
+	virtual quint64 skipTo(quint64 docId);
 };
 }
 

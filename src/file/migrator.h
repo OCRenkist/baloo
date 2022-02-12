@@ -1,7 +1,7 @@
 /*
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_MIGRATOR_H
@@ -16,14 +16,14 @@ class FileIndexerConfig;
 class Migrator
 {
 public:
-    Migrator(const QString& dbPath, FileIndexerConfig* config);
+	Migrator(const QString& dbPath, FileIndexerConfig* config);
 
-    bool migrationRequired() const;
-    void migrate();
+	bool migrationRequired() const;
+	void migrate();
 
 private:
-    QString m_dbPath;
-    FileIndexerConfig* m_config;
+	QString m_dbPath;
+	FileIndexerConfig* m_config;
 };
 }
 

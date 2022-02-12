@@ -1,9 +1,9 @@
 /*
-    This file is part of the KDE Baloo project.
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
-    SPDX-FileCopyrightText: 2011 The LevelDB Authors. All rights reserved.
+	This file is part of the KDE Baloo project.
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	SPDX-FileCopyrightText: 2011 The LevelDB Authors. All rights reserved.
 
-    SPDX-License-Identifier: LGPL-2.1-or-later AND BSD-3-Clause
+	SPDX-License-Identifier: LGPL-2.1-or-later AND BSD-3-Clause
 */
 
 #ifndef BALOO_STORAGE_LEVELDB_UTIL_CODING_H
@@ -22,7 +22,7 @@ namespace Baloo {
 
 inline void putFixed64(QByteArray* dst, quint64 value)
 {
-    dst->append(reinterpret_cast<const char*>(&value), sizeof(value));
+	dst->append(reinterpret_cast<const char*>(&value), sizeof(value));
 }
 
 /*
@@ -37,27 +37,27 @@ extern const char* getVarint32Ptr(const char* p, const char* limit, quint32* v);
 
 inline quint64 decodeFixed64(const char* ptr)
 {
-    // Load the raw bytes
-    quint64 result;
-    memcpy(&result, ptr, sizeof(result));  // gcc optimizes this to a plain load
-    return result;
+	// Load the raw bytes
+	quint64 result;
+	memcpy(&result, ptr, sizeof(result));  // gcc optimizes this to a plain load
+	return result;
 }
 
 // Internal routine for use by fallback path of GetVarint32Ptr
 extern char* getVarint32PtrFallback(char* p, char* limit, quint32* value);
 inline char* getVarint32Ptr(char* p, char* limit, quint32* value)
 {
-    if (p >= limit) {
-        return nullptr;
-    }
+	if (p >= limit) {
+		return nullptr;
+	}
 
-    quint32 result = *(reinterpret_cast<const unsigned char*>(p));
-    if ((result & 128) == 0) {
-        *value = result;
-        return p + 1;
-    }
+	quint32 result = *(reinterpret_cast<const unsigned char*>(p));
+	if ((result & 128) == 0) {
+		*value = result;
+		return p + 1;
+	}
 
-    return getVarint32PtrFallback(p, limit, value);
+	return getVarint32PtrFallback(p, limit, value);
 }
 
 }

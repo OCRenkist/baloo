@@ -1,7 +1,7 @@
 /*
-    SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
+	SPDX-FileCopyrightText: 2015 Vishesh Handa <vhanda@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.1-or-later
+	SPDX-License-Identifier: LGPL-2.1-or-later
 */
 
 #ifndef BALOO_INDEXCLEANER_H
@@ -17,17 +17,17 @@ class FileIndexerConfig;
 
 class IndexCleaner : public QObject, public QRunnable
 {
-    Q_OBJECT
+	Q_OBJECT
 public:
-    IndexCleaner(Database* db, FileIndexerConfig* config);
-    void run() override;
+	IndexCleaner(Database* db, FileIndexerConfig* config);
+	void run() override;
 
 Q_SIGNALS:
-    void done();
+	void done();
 
 private:
-    Database* m_db;
-    FileIndexerConfig* m_config;
+	Database* m_db;
+	FileIndexerConfig* m_config;
 };
 }
 

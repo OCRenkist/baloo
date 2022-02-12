@@ -1,8 +1,8 @@
 /*
-    This file is part of the KDE Project
-    SPDX-FileCopyrightText: 2008-2010 Sebastian Trueg <trueg@kde.org>
+	This file is part of the KDE Project
+	SPDX-FileCopyrightText: 2008-2010 Sebastian Trueg <trueg@kde.org>
 
-    SPDX-License-Identifier: LGPL-2.0-or-later
+	SPDX-License-Identifier: LGPL-2.0-or-later
 */
 
 #ifndef FILE_EXCLUDE_FILTERS_H_
